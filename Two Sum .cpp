@@ -9,7 +9,7 @@ public:
             if(mp.find(ele)==mp.end())
             {
                 mp[nums[i]]=i;
-            }
+            } 
             else
             {
                 return {i,mp[target-nums[i]]};
