@@ -1,27 +1,22 @@
-vector<int> Solution::prevSmaller(vector<int> &A) 
+#include<stack>
+vector<int> nextSmallerElement(vector<int> &arr, int n)
 {
-       int n=A.size();
-       stack<int> st;
-       vector<int> vec;
-       for(int i=0;i<n;i++)
-       {
-           while(!st.empty() && A[i]<=st.top()) 
-           {
-               st.pop();
-           }
-
-           if(st.empty())
-           {
-              vec.push_back(-1);
-           }
-
-           else 
-           {
-               vec.push_back(st.top());
-           }
-
-           st.push(A[i]);
-       }
-       
-       return vec;
+    // Write your code here.
+    
+    stack<int>s;
+    s.push(-1);
+    vector<int>ans(n);
+    
+    for(int i=n-1;i>=0;i--)
+    {
+        int curr=arr[i];
+        while(curr<=s.top())
+        {
+            s.pop();
+        }
+        ans[i]=s.top();
+        s.push(curr);
+    }
+    return ans;
+    
 }
